@@ -32,6 +32,7 @@ ctx.stroke(); // rita stroke
 ctx.fill(); // fyll
 
 // Linje
+
 ctx.beginPath();
 ctx.moveTo(400, 400); // linjens startpunkt, X Y
 ctx.lineTo(600, 550); // linjens slutpunkt, X Y

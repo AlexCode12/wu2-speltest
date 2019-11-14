@@ -13,49 +13,48 @@ canvas.height = HEIGHT; // ... & höjd
  */
 
 // Text
-ctx.font = "20px Comic Sans MS"; // typsnitt och storlek, du kan använda typsnitt du länkar in från google fonts
-ctx.fillStyle = '#000'; // färg
-ctx.textAlign = "left"; // align på texten, här center för att vi placerar den i canvas mitt
-ctx.fillText("HEJ!", canvas.width / 2, 100); // texten vi ska skriva ut samt dess X och Y kordinat ( från top left)
+ctx.font = "20px Comic Sans MS"; 
+ctx.fillStyle = '#000'; 
+ctx.textAlign = "left"; 
+ctx.fillText("HEJ!", canvas.width / 2, 100);
 
-// Rektangel
-ctx.fillStyle = "blue"; // fill
-ctx.fillRect(600, 300, 100, 25); // fyll en rektangel, X Y bredd höjd
-ctx.fillStyle = "red"; // fill
-ctx.fillRect(100, 300, 150, 100); // fyll en rektangel, X Y bredd höjd
-ctx.strokeStyle = "rgba(0,0,0, 0.7)"; // stroke-färg
-ctx.lineWidth = "2"; // linjens bredd
-ctx.stroke(); // rita stroke
-ctx.fill(); // fyll
+ctx.fillStyle = "blue"; 
+ctx.fillRect(600, 300, 100, 25); 
+
+ctx.fillStyle = "red"; 
+ctx.fillRect(100, 300, 150, 100); 
+ctx.lineWidth = "2"; 
+ctx.strokeRect(100, 300, 150, 100); 
+ctx.stroke(); 
+ctx.fill(); 
 
 
 // Cirkel
-ctx.beginPath(); // börja en path, krävs för detta
-ctx.arc(100, 75, 50, 0, 2 * Math.PI); // se funktionen för mer information
-ctx.fillStyle = "yellow"; // färg
-ctx.strokeStyle = "rgba(0,0,0, 0.7)"; // stroke-färg
+ctx.beginPath(); 
+ctx.arc(100, 75, 50, 0, 2 * Math.PI); 
+ctx.fillStyle = "yellow"; 
+ctx.strokeStyle = "rgba(0,0,0, 0.7)"; 
 ctx.lineWidth = "2"; // linjens bredd
 ctx.stroke(); // rita stroke
 ctx.fill(); // fyll
 
 // Linje
-ctx.beginPath();
-ctx.moveTo(400, 400); // linjens startpunkt, X Y
-ctx.lineTo(600, 550); // linjens slutpunkt, X Y
-ctx.strokeStyle = getRandomColor(0.8); // slumpa en färg
-ctx.lineWidth = "4"; // linjens bredd
-ctx.stroke();
+var i;
+for (i = 0; i < 160; i = i + 40) {
+    ctx.beginPath();
+    ctx.moveTo(i, 300 + i); // linjens startpunkt, X Y
+    ctx.lineTo(i + 100, 600 + i); // linjens slutpunkt, X Y
+    ctx.strokeStyle = getRandomColor(0); // slumpa en färg
+    ctx.lineWidth = "4"; // linjens bredd
+    ctx.stroke();
 
+}
 // Bild
 let img = new Image();
 img.src = 'img/THEGRETEST.png';
 img.onload = function() {
     ctx.drawImage(img, 400, 150, 256, 256);
 };
-
-
-let main = document.getElementsByTagName('main')[0]; // hämta main elementet från vårt HTML dokument
-main.appendChild(canvas); // lägg till canvaselementet i main i HTML dokumentet
 
 // färgslumpare
 function getRandomColor(alpha) {
@@ -64,3 +63,5 @@ function getRandomColor(alpha) {
     let b = Math.round(Math.random() * 255);
     return "rgba(" + r + "," + g + "," + b + "," +  (alpha ? alpha : 1) + ")";
 }
+let main = document.getElementsByTagName('main')[0]; // hämta main elementet från vårt HTML dokument
+main.appendChild(canvas); // lägg till canvaselementet i main i HTML dokumentet
