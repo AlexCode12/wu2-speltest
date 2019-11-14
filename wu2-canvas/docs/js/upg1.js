@@ -18,6 +18,8 @@ ctx.fillStyle = '#000';
 ctx.textAlign = "left"; 
 ctx.fillText("HEJ!", canvas.width / 2, 100);
 
+// Rektanglar
+
 ctx.fillStyle = "blue"; 
 ctx.fillRect(600, 300, 100, 25); 
 
@@ -34,18 +36,18 @@ ctx.beginPath();
 ctx.arc(100, 75, 50, 0, 2 * Math.PI); 
 ctx.fillStyle = "yellow"; 
 ctx.strokeStyle = "rgba(0,0,0, 0.7)"; 
-ctx.lineWidth = "2"; // linjens bredd
-ctx.stroke(); // rita stroke
-ctx.fill(); // fyll
+ctx.lineWidth = "2"; 
+ctx.stroke(); 
+ctx.fill(); 
 
 // Linje
 var i;
 for (i = 0; i < 160; i = i + 40) {
     ctx.beginPath();
-    ctx.moveTo(i, 300 + i); // linjens startpunkt, X Y
-    ctx.lineTo(i + 100, 600 + i); // linjens slutpunkt, X Y
-    ctx.strokeStyle = getRandomColor(0); // slumpa en färg
-    ctx.lineWidth = "4"; // linjens bredd
+    ctx.moveTo(i, 300 + i); 
+    ctx.lineTo(i + 100, 600 + i); 
+    ctx.strokeStyle = getRandomColor(0); 
+    ctx.lineWidth = "4"; 
     ctx.stroke();
 
 }
