@@ -27,7 +27,6 @@ ctx.fillStyle = "red";
 ctx.fillRect(100, 300, 150, 100); 
 ctx.lineWidth = "2"; 
 ctx.strokeRect(100, 300, 150, 100); 
-ctx.stroke(); 
 ctx.fill(); 
 
 

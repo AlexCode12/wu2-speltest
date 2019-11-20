@@ -8,14 +8,14 @@ canvas.width  = WIDTH; // sätt elementets bredd
 canvas.height = HEIGHT; // ... & höjd
 
 // Vi skapar en Box som vi kan kalla på för att skapa nya boxar.
-const Box = function(x, y) {
+const Box = function(x, y, width, height) {
     let box = {};
     box.x = x;
     box.y = y;
-    box.speed = 4;
-    box.width = 100;
-    box.height = 100;
-    box.color = getRandomColor();
+    box.speed = 35;
+    box.width = width;
+    box.height = height;
+    box.color = 'rgba(250, 120, 250, 1.0)';
     box.draw = function() {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -23,7 +23,22 @@ const Box = function(x, y) {
     return box; // vi returnerar box objektet
 }
 
-let box = Box(0, 200); // skapa en ny Box och spara den i variabeln box
+const Circle = function(x,y, radius) {
+    let circle = {};
+    circle.speed = 40;
+    circle.y = y;
+    circle.x = x;
+    circle.radius = radius;
+    circle.draw = function() {
+        ctx.beginPath(); // börja en path, krävs för detta
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI); // se funktionen för mer information
+        ctx.fillStyle = "yellow"; // färg
+        ctx.fill(); // fyll
+    }
+    return circle;
+}
+let box = Box(0, 200, 100, 100); // skapa en ny Box och spara den i variabeln box
+let circle = Circle(400,50,50);
 
 // spelets huvudloop som kallas på genom requestAnimationFrame
 // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
@@ -56,6 +71,12 @@ function step(timestamp) {
         box.speed = -box.speed;
     }
     box.draw(); // kalla på boxens rit funktion
+
+    circle.y += circle.speed;
+    if (circle.y + circle.speed + circle.radius > HEIGHT || circle.y - circle.radius + circle.speed < 0) {
+        circle.speed = -circle.speed;
+    }
+    circle.draw();
 
     // callback på sig själv genom requestAnimationFrame
     canvasLoop = window.requestAnimationFrame(step);
