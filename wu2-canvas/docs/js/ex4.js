@@ -12,9 +12,9 @@ const Box = function(x, y, width, height) {
     let box = {};
     box.x = x;
     box.y = y;
-    box.speed = 8;
-    box.width = width || 40;
-    box.height = height || 40;
+    box.speed = 12;
+    box.width = width || 50;
+    box.height = height || 50;
     box.color = getRandomColor();
     box.draw = function() {
         ctx.fillStyle = this.color;
@@ -30,9 +30,9 @@ let obstacles = [];
 for(let i = 0; i < 10; i++) {
     obstacles.push(
         Box(
-            random(100, WIDTH - 100),
-            random(100, HEIGHT - 100),
-            random(40, 200), random(40, 200)
+            random(80, WIDTH - 80),
+            random(80, HEIGHT - 80),
+            random(40, 300), random(40, 300)
             )
         );
 }
@@ -130,7 +130,7 @@ function colCheck(shapeA, shapeB) {
             }
         }
     }
-    return colDir;
+ return colDir;
 }
 
 /*
